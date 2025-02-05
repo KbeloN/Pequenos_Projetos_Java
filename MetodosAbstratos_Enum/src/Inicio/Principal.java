@@ -43,6 +43,6 @@ public class Principal {
 			System.out.println(String.format("%.2f",shape.area()));
 		}
 		
-		sc.close;
+		sc.close();
 	}
 }
