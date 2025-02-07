@@ -14,7 +14,6 @@ public class program {
 	public static void main(String[] args) throws ParseException{
 		Scanner sc = new Scanner(System.in);
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Date now = new Date();
 		try{
 			System.out.println("Enter resevation DATA:");
 			System.out.print("Room number: ");
@@ -40,6 +39,9 @@ public class program {
 		}
 		catch(DomainException e) {
 			System.out.println("Error in reservation: " + e.getMessage());
+		}
+		finally {
+			sc.close();
 		}
 	}
 }
