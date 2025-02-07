@@ -4,8 +4,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class main {
+	
+	static Scanner sc = new Scanner(System.in);
 
-	public static void main(String[] args) {
+	public static void main(String[]args) {
 		method1();
 		System.out.println("***END OF PROGRAM***");
 	}
@@ -19,7 +21,6 @@ public class main {
 	public static void method2() {
 		try {
 			System.out.println("***METHOD2 START***");
-			Scanner sc = new Scanner(System.in);
 			String[] names = sc.nextLine().split(" ");
 			int i = sc.nextInt();
 			System.out.println(names[i]);
@@ -31,6 +32,9 @@ public class main {
 		catch(InputMismatchException e) {
 			System.out.println("invalid type");
 			e.printStackTrace();
+		}
+		finally {
+			sc.close();
 		}
 		System.out.println("***METHOD2 END***");
 	}
