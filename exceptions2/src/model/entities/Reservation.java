@@ -11,7 +11,10 @@ public class Reservation {
 	
 	static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	
-	public Reservation(Integer roomNumber, Date checkIn, Date checkOut) {
+	public Reservation(Integer roomNumber, Date checkIn, Date checkOut) throws IllegalArgumentException {
+		if(!checkOut.after(checkIn)) {
+			throw new IllegalArgumentException("Check-out date must be AFTER check-in date.");
+		}
 		this.roomNumber = roomNumber;
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
@@ -34,16 +37,15 @@ public class Reservation {
 		return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
 	}
 	
-	public String updateDates(Date checkIn, Date checkOut) {
+	public void updateDates(Date checkIn, Date checkOut) throws IllegalArgumentException {
 		if(checkIn.before(this.checkIn) || checkOut.before(this.checkOut)){
-			return "The reservation date must be future.";	
+			throw new IllegalArgumentException("Reservation update date must be future.");
 		}
 		if(!checkOut.after(checkIn)) {
-			return "Check-out date must be after check-in date.";
+			throw new IllegalArgumentException("Check-out date must be AFTER check-in date.");
 		}
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
-		return null;
 	}
 	
 	@Override
