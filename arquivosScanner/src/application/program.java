@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class program {
 	public static void main(String[]args) {
 		File file = new File("c:\\ProjetosJava\\arquivosScanner\\in.txt\\");
-		file.
 		Scanner sc = null;
 		try {
 			sc = new Scanner(file);
@@ -19,7 +18,7 @@ public class program {
 			System.out.println("Error: " + e.getMessage());
 		}
 		finally {
-			//Caso o scanner não seja aberto e tiver um sc.close, o programa vai quebrar ,e por isso, devemos testar se realmente precisa fecha-lo
+			//Caso o scanner não seja aberto e tiver um sc.close, o programa vai quebrar ,e por isso, devemos testar se realmente precisamos fecha-lo
 			if(sc != null) {
 				sc.close();
 			}
