@@ -11,7 +11,6 @@ public class program {
 		//new FileWriter(path,true) == adicionar mais informações nas últimas linhas
 		//new FileWriter(path) == criar ou refazer o arquivo do zero
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(path,true))) {
-			String line;
 			for(String obj : list) {
 				bw.write(obj);
 				bw.newLine();
