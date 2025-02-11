@@ -20,17 +20,17 @@ public class program {
 		List<Product> items = new ArrayList<>();
 		
 		System.out.print("Enter file path: ");
-		String path = sc.nextLine();
+		String sourceFilestr = sc.nextLine();
 		
-		File sourceFile = new File(path);
-		String sourceFilestr = sourceFile.getParent();
+		File sourceFile = new File(sourceFilestr);
+		String sourceFolderstr = sourceFile.getParent();
 		
-		boolean sucess = new File(sourceFilestr + "\\out").mkdir();
+		boolean sucess = new File(sourceFolderstr + "\\out").mkdir();
 		System.out.println("New File: " + sucess);
 		
-		String sumPath = sourceFilestr + "\\out\\summary.csv";
+		String sumPath = sourceFolderstr + "\\out\\summary.csv";
 		
-		try (BufferedReader br = new BufferedReader(new FileReader(sourceFile))){
+		try (BufferedReader br = new BufferedReader(new FileReader(sourceFilestr))){
 			String line = br.readLine();
 			while(line != null) {
 				String[] data = line.split(",");
