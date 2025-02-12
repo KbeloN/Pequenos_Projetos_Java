@@ -36,10 +36,10 @@ public class RentalService {
 		
 		
 		Double minutes = (double) Duration.between(carRental.getStart(), carRental.getFinish()).toMinutes();
-		Double hours = minutes / 60;
+		Double hours = minutes / 60.0;
 		
 		Double basicPayment;
-		if(hours <= 12) {
+		if(hours <= 12.0) {
 			basicPayment = pricePerHour * Math.ceil(hours);
 		}else {
 			basicPayment = pricePerDay * Math.ceil(hours / 24);
