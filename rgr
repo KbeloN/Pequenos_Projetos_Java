@@ -1,0 +1,50 @@
+[1mdiff --git a/Interface/src/model/services/BrazilTaxService.java b/Interface/src/model/services/BrazilTaxService.java[m
+[1mindex 4378b9b..6552cfb 100644[m
+[1m--- a/Interface/src/model/services/BrazilTaxService.java[m
+[1m+++ b/Interface/src/model/services/BrazilTaxService.java[m
+[36m@@ -2,6 +2,7 @@[m [mpackage model.services;[m
+ [m
+ public class BrazilTaxService implements TaxService {[m
+ 	[m
+[32m+[m	[32m@Override[m
+ 	public Double tax(Double amount) {[m
+ 		if(amount <= 100.00) {[m
+ 			return amount * 0.2;[m
+[1mdiff --git a/Interface/src/model/services/RentalService.java b/Interface/src/model/services/RentalService.java[m
+[1mindex 51ec534..54cfb8f 100644[m
+[1m--- a/Interface/src/model/services/RentalService.java[m
+[1m+++ b/Interface/src/model/services/RentalService.java[m
+[36m@@ -10,31 +10,17 @@[m [mpublic class RentalService {[m
+ 	private Double pricePerHour;[m
+ 	private Double pricePerDay;[m
+ 	[m
+[31m-	private BrazilTaxService taxService;[m
+[32m+[m	[32mprivate TaxService taxService;[m
+ 	[m
+ 	[m
+[31m-	public RentalService(Double pricePerHour, Double pricePerDay, BrazilTaxService taxService) {[m
+[32m+[m	[32mpublic RentalService(Double pricePerHour, Double pricePerDay, TaxService taxService) {[m
+ 		this.pricePerHour = pricePerHour;[m
+ 		this.pricePerDay = pricePerDay;[m
+ 		this.taxService = taxService;[m
+ 	}[m
+ 	[m
+[31m-	public Double getPricePerHour() {[m
+[31m-		return pricePerHour;[m
+[31m-	}[m
+[31m-	public void setPricePerHour(Double pricePerHour) {[m
+[31m-		this.pricePerHour = pricePerHour;[m
+[31m-	}[m
+[31m-	public Double getPricePerDay() {[m
+[31m-		return pricePerDay;[m
+[31m-	}[m
+[31m-	public void setPricePerDay(Double pricePerDay) {[m
+[31m-		this.pricePerDay = pricePerDay;[m
+[31m-	}[m
+[31m-	[m
+ 	public void processInvoice(CarRental carRental) {[m
+ 		[m
+[31m-		[m
+ 		Double minutes = (double) Duration.between(carRental.getStart(), carRental.getFinish()).toMinutes();[m
+ 		Double hours = minutes / 60.0;[m
+ 		[m
