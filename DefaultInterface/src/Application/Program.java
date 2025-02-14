@@ -4,8 +4,8 @@ import java.security.InvalidParameterException;
 import java.util.Locale;
 import java.util.Scanner;
 
-import services.BrazilInterestService;
 import services.InterestService;
+import services.USAInterestService;
 
 public class Program {
 	public static void main(String[]args) {
@@ -18,7 +18,7 @@ public class Program {
 			System.out.print("Mounths: ");
 			Integer mounths = sc.nextInt();
 			
-			InterestService is = new BrazilInterestService(2.0);
+			InterestService is = new USAInterestService(1.0);
 			Double amountAfter = is.payment(amount, mounths);
 			System.out.print("What you have to pay after " + mounths + " mounths: " + String.format("%.2f", amountAfter));
 			
