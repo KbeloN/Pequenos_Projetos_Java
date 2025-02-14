@@ -3,32 +3,18 @@ package services;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PrintService {
-	private Integer number;
-	
-	List<Integer> list = new ArrayList<>();
+public class PrintService<T> {
+	List<T> list = new ArrayList<>();
 
-	public PrintService(Integer number) {
-		this.number = number;
-	}
-
-	public Integer getNumber() {
-		return number;
-	}
-
-	public void setNumber(Integer number) {
-		this.number = number;
-	}
-
-	public List<Integer> getList() {
-		return list;
+	public PrintService() {
+		
 	}
 	
-	public void addItem(Integer num) {
-		list.add(num);
+	public void addItem(T element) {
+		list.add(element);
 	}
 	
-	public Integer first() {
+	public T first() {
 		if(list.isEmpty()) {
 			throw new IllegalStateException("The list need to have something");
 		}
@@ -37,10 +23,11 @@ public class PrintService {
 	
 	public void print() {
 		System.out.print("[");
-		System.out.print(list.get(0));
-		for(int x = 1; x < number; x++) {
-			System.out.print(", ");
-			System.out.print(list.get(x));
+		if(!list.isEmpty()) {
+			System.out.print(list.get(0));
+		}
+		for(int x = 1; x < list.size(); x++) {
+			System.out.print(", " + list.get(x));
 		}
 		System.out.println("]");
 	}

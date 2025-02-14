@@ -11,18 +11,19 @@ public class Program {
 		Locale.setDefault(Locale.US);
 		
 		try (Scanner sc = new Scanner(System.in)){
-			System.out.print("How many numbers: ");
-			Integer numbers = sc.nextInt();
+			System.out.print("How many values: ");
+			Integer values = sc.nextInt();
 			
-			PrintService ps = new PrintService(numbers);
+			PrintService<Integer> ps = new PrintService<Integer>();
 			
-			for(int i = 0;i < numbers;i++) {
+			for(int i = 0; i < values; i++) {
 				ps.addItem(sc.nextInt());
 			}
 			
 			ps.print();
 			System.out.println("First one: " + ps.first());
-		} catch (IllegalStateException e) {
+		}
+		catch (IllegalStateException e) {
 			System.out.println("Error: " + e.getMessage());
 		}
 	}
