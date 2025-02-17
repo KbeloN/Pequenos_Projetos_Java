@@ -7,21 +7,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import entities.Product;
 import services.CalculationService;
 
 public class Program {
 
 	public static void main(String[] args) {
 		Locale.setDefault(Locale.US);
-		String path = "c:\\ProjetosJAVA\\GenericsDelimitados\\in.txt";
+		String path = "c:\\ProjetosJAVA\\GenericsDelimitados\\in.csv";
 		
-		List<Integer> list = new ArrayList<>();
+		List<Product> list = new ArrayList<>();
 		
 		try (BufferedReader br = new BufferedReader(new FileReader(path))){
 			
 			String line = br.readLine();
 			while(line != null) {
-				list.add(Integer.parseInt(line));
+				String[] fields = line.split(",");
+				list.add(new Product(fields[0], Double.parseDouble(fields[1])));
 				line = br.readLine();
 			}
 			System.out.println("Max: " + CalculationService.max(list));
